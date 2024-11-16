@@ -1,8 +1,23 @@
+import {Link} from 'react-router-dom';
+import CandidateSearch from '../pages/CandidateSearch';
+import SavedCandidates from '../pages/SavedCandidates';
+
 const Nav = () => {
-  // TODO: Add necessary code to display the navigation bar and link between the pages
   return (
-    <div>Nav</div>
-  )
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/candidates">CandidateSearch</Link>
+        </li>
+        <li>
+          <Link to="/saved-candidates">SavedCandidates</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Nav;
