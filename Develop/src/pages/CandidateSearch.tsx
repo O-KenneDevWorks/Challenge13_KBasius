@@ -75,9 +75,9 @@ const CandidateSearch = () => {
         <p>Company: {currentCandidate.company}</p>
         <a href={currentCandidate.html_url} target="_blank" rel="noopener noreferrer">Profile</a>
       </div>
-      <button onClick={saveCandidate}>+</button>
-      <button onClick={nextCandidate}>-</button>
-      <button onClick={previousCandidate}>Previous</button>
+      <button onClick={saveCandidate} aria-label="Save current candidate">+</button>
+      <button onClick={nextCandidate} aria-label="Next candidate">-</button>
+      <button onClick={previousCandidate} aria-label="Previous candidate">Previous</button>
 
       <h2>Saved Candidates</h2>
       {savedCandidates.length > 0 ? (
