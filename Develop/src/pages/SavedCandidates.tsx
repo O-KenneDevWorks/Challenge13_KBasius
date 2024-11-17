@@ -16,26 +16,52 @@ const SavedCandidates = () => {
 
     loadSavedCandidates();
   }, []);
+
+  const removeCandidate = (index: number) => {
+    const updatedCandidates = savedCandidates.filter((_, i) => i !== index);
+    setSavedCandidates(updatedCandidates);
+    localStorage.setItem('SavedCandidates', JSON.stringify(updatedCandidates));
+  };
   
   return (
     <>
       <h1>Potential Candidates</h1>
       {savedCandidates.length > 0 ? (
-        <ul>
-          {savedCandidates.map((candidate, index) => (
-            <li key={index}>
-              <img src={candidate.avatar_url} alt={candidate.login} style={{width: '50px', height: '50px' }} />
-              <p>{candidate.login}</p>
-              <p>Name: {candidate.name}</p>
-              <p>Location: {candidate.location}</p>
-              <p>Company: {candidate.company}</p>
-              <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">Profile</a>
-            </li>
-          ))}
-        </ul>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Company</th>
+              <th>Profile</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {savedCandidates.map((candidate, index) => (
+              <tr key={index}>
+                <td>
+                  <img src={candidate.avatar_url} alt={candidate.login} style={{ width: '50px', height: '50px' }} />
+                </td>
+                <td>{candidate.login}</td>
+                <td>{candidate.name}</td>
+                <td>{candidate.location}</td>
+                <td>{candidate.company}</td>
+                <td>
+                  <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">Profile</a>
+                </td>
+                <td>
+                  <button onClick={() => removeCandidate(index)}>Remove</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <p> No candidates have been saved.</p>
-      )}  
+        <p>No candidates have been saved.</p>
+      )}
     </>
   );
 };
