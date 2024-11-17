@@ -16,8 +16,10 @@ const CandidateSearch = () => {
     const fetchCandidate = async () => {
       try {
         const data = await searchGithub();
+        console.log('Fetched data:', data);
         setCandidates(data);
       } catch (err) {
+        console.error('Error fetching candidates:', err);
         setError('Failed to fetch candidates');
       } finally {
         setLoading(false);
@@ -57,12 +59,16 @@ const CandidateSearch = () => {
     return <h1>Loading.....</h1>;
   }
 
-  const candidateKeys = Object.keys(candidates);
   if (error) {
     return <h1>{error}</h1>;
   }
 
+  const candidateKeys = Object.keys(candidates);
   const currentCandidate = candidates[candidateKeys[currentIndex]];
+
+  if (!currentCandidate) {
+    return <h1>No candidate found</h1>;
+  }
 
   return (
     <div>
