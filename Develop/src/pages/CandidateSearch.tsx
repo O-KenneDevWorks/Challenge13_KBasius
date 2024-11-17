@@ -6,7 +6,7 @@ const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<{ [key: string]: Candidate }>({});
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>(() => {
-    const saved = localStorage.getItem('savedCandidates');
+    const saved = localStorage.getItem('SavedCandidates');
     return saved ? JSON.parse(saved) : [];
   });
   const [loading, setLoading] = useState<boolean>(true);
@@ -35,7 +35,7 @@ const CandidateSearch = () => {
       const candidateToSave = candidates[candidateKeys[currentIndex]];
       const updatedSavedCandidates = [...savedCandidates, candidateToSave];
       setSavedCandidates(updatedSavedCandidates);
-      localStorage.setItem('savedCandidates', JSON.stringify(updatedSavedCandidates));
+      localStorage.setItem('SavedCandidates', JSON.stringify(updatedSavedCandidates));
       nextCandidate();
     }
   };
