@@ -8,7 +8,7 @@ const SavedCandidates = () => {
 
   useEffect(() => {
     const loadSavedCandidates = () => {
-      const saved = localStorage.getItem('savedCCandidates');
+      const saved = localStorage.getItem('SavedCandidates');
       if (saved) {
         setSavedCandidates(JSON.parse(saved));
       }
