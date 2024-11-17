@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-
 import App from './App.tsx';
 import CandidateSearch from './pages/CandidateSearch.tsx';
 import SavedCandidates from './pages/SavedCandidates.tsx';
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
         element: <CandidateSearch />,
       },
       {
-        path: '/SavedCandidates',
+        path: 'saved-candidates',
         element: <SavedCandidates />,
       },
     ],
