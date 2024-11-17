@@ -76,14 +76,15 @@ const CandidateSearch = () => {
       <div>
         <img src={currentCandidate.avatar_url} alt={currentCandidate.login} />
         <h2>{currentCandidate.login}</h2>
-        <p>Name: {currentCandidate.name}</p>
-        <p>Location: {currentCandidate.location}</p>
-        <p>Company: {currentCandidate.company}</p>
+        <p>Name: {currentCandidate.name || 'N/A'}</p>
+        <p>Location: {currentCandidate.location || 'Not specified'}</p>
+        <p>Company: {currentCandidate.company || 'Not specified'}</p>
         <a href={currentCandidate.html_url} target="_blank" rel="noopener noreferrer">Profile</a>
       </div>
       <button onClick={saveCandidate} aria-label="Save current candidate">+</button>
       <button onClick={nextCandidate} aria-label="Next candidate">-</button>
       <button onClick={previousCandidate} aria-label="Previous candidate">Previous</button>
+      <button onClick={nextCandidate} aria-label="Next candidate">Next</button>
 
       <h2>Saved Candidates</h2>
       {savedCandidates.length > 0 ? (
